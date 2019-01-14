@@ -40,9 +40,6 @@ df.drop(['vendorName', 'vendorId', 'surveyType', 'facilityName', 'surveyResponde
 # Drop Null rows from Related columns w/ for-loop
 for col in ['p1400120', 'p1400220', 'p1400320', 'p1400420', 'p1400520', 'p1400620', 'p1400720', 'p1400820', 'p1400920', 'p1400403', 'p1400503', 'p1401020', 'p1401120', 'p1401220', 'p1401320', 'p1401420', 'p0200202', 'p0801402', 'p0302902', 'p1102102', 'p0340602', 'p0349502', 'p0501102', 'p0500302', 'p0001100', 'p0001200', 'p1400102', 'p1500526', 'p0700102', 'p1400143', 'p1400243', 'p1400343', 'p1400202', 'p0610503', 'p0610603', 'p0610703', 'p0610803', 'p0610903', 'p1400203', 'p1400103']:
     df.dropna(subset = [col], inplace=True)
-    #print(col, df.shape)
-
-#print(df.info())
 
 # Drop columns with majority Null values
 df.drop(['p0341602', 'p0370302', 'p0604099', 'p0411002', 'p0401339', 'p0607002', 'p0602302', 'p0001100', 'p0033200', 'p0000600', 'p0001500', 'p0011900', 'p0003000'], axis=1, inplace=True)
@@ -50,7 +47,6 @@ df.drop(['p0341602', 'p0370302', 'p0604099', 'p0411002', 'p0401339', 'p0607002',
 # Drop Null rows from Maybe Related Columns
 for col in ['p0302402', 'p1400303']:
     df.dropna(subset = [col], inplace=True)
-    #print(col, df.shape)
 
 # Drop rows with Null values remaining
 df = df.dropna()
@@ -62,8 +58,6 @@ df['refDate'] = df['refDate'].apply(lambda x: x.toordinal())
 col_names = list(df.columns.values)
 X_names = list(df.iloc[:,3:].columns.values)
 y_names = list(df.iloc[:,:3].columns.values)
-
-df2 = df.shape
 
 # Encode categorical features into numerical format 
 cat = ['sdmPk','facilityId','surveyId','refDate','p1400120','p1400220','p1400320','p1400420','p1400520','p1400620','p1400720','p1400820','p1400920','p1400403','p1400503','p1401020','p1401120','p1401220','p1401320','p1401420','p0200202','p0801402','p0302402','p0302902','p1102102','p0340602','p0349502','p0501102','p0500302','p0001200','p1400102','p1500526','p0700102','p1400143','p1400243','p1400343','p0003100','p0300502','p0013900','p1400202','p0610503','p0610603','p0610703','p0610803','p0610903','p1400203','p1400103','p1400303','Age1','Nursing','Doctor','Room','Staff','Black','Asian','Pacific','Indian','White','staffedbeds','admissions','census','outpatientvisits','births']
